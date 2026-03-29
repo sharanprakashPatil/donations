@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: #0f172a;
+    color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
+}
+
+/* Sidebar Styling - Inherited visually from AdminData for consistency */
+.sidebar {
+    width: 280px;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.sidebar-header h2 { font-size: 1.25rem; font-weight: 700; color: #fff; }
+
+.sidebar-nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    text-decoration: none;
+    color: #94a3b8;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover { background: rgba(255, 255, 255, 0.05); color: white; }
+
+.nav-item.active {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    color: #8b5cf6;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.nav-item.logout { margin-top: auto; color: #ef4444; }
+.nav-item.logout:hover { background: rgba(239, 68, 68, 0.1); }
+
+/* Main Content Styling */
+.main-content {
+    flex: 1;
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Base structural glow */
+.main-content::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(99, 102, 241, 0.1);
+    top: -200px;
+    right: -200px;
+    filter: blur(80px);
+    z-index: -1;
+}
+
+.top-header { margin-bottom: 3rem; animation: fadeIn 0.5s ease; }
+.greeting h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; color: #f8fafc; }
+.greeting p { color: #94a3b8; }
+
+/* Documents List Design */
+.documents-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 1000px;
+}
+
+.document-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.document-card {
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.document-card:hover {
+    transform: translateX(10px);
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.doc-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.doc-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(99, 102, 241, 0.1);
+    color: #8b5cf6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.doc-details h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.doc-details p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.upload-date {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+/* Action Buttons */
+.doc-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.btn {
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-load {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-load:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+
+.btn-accept {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.btn-accept:hover {
+    background: #10b981; color: white; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-reject {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.btn-reject:hover {
+    background: #ef4444; color: white; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+}
+
+/* Post-Action Status Badges */
+.status-badge {
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.status-badge.success {
+    background: rgba(16, 185, 129, 0.1);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.status-badge.danger {
+    background: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Bank Details Div Dropdown Styling */
+.bank-details-card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-top: -1rem; /* Negative margin pulls it beneath the document card visually */
+    padding-top: 2rem;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s ease-out;
+}
+
+.bank-details-card.show-details {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bank-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-green { color: #34d399; }
+
+.bank-header h4 {
+    color: #34d399;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.bank-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.bank-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.bank-label {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    font-weight: 600;
+}
+
+.bank-value {
+    font-size: 1.1rem;
+    color: #f8fafc;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* Animations */
+.fade-in { animation: fadeInSlide 0.5s ease-out backwards; }
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .document-card { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    .doc-actions { width: 100%; display: grid; grid-template-columns: 1fr 1fr 1fr; }
+    .bank-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px) {
+    body { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; position: relative; padding: 1.5rem; }
+    .sidebar-nav { flex-direction: row; flex-wrap: wrap; }
+    .main-content { padding: 2rem 1.5rem; }
+}

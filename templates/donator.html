@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Donation - Support Seekers</title>
+    <link rel="stylesheet" href="{% static 'css/donator.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="donation-container">
+        
+        <!-- Navbar -->
+        <nav class="top-nav">
+            <a href="/base/" class="back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                Back to Dashboard
+            </a>
+            <div class="brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+                <span>Donator Portal</span>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="form-wrapper glass-panel fade-in">
+                
+                <header class="form-header">
+                    <h2>Make an Impact</h2>
+                    <p>Your contribution directly supports verified seekers. Fill out your details below to proceed.</p>
+                </header>
+
+                <form action="{% url 'donator' %}" method="POST" class="payment-form">
+                    {% csrf_token %}
+                    
+                    <div class="input-group">
+                        <label for="name">Your Name</label>
+                        <div class="input-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="amount">Donation Amount (₹)</label>
+                        <div class="input-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            <input type="number" id="amount" name="amount" min="1" placeholder="5000" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="message">Message of Support</label>
+                        <p class="helper-text">Leave a kind message to empower the seeker (Max 20 lines)</p>
+                        <textarea id="message" name="message" rows="20" placeholder="Write words of encouragement here..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-pay" onclick="alert('Proceeding to Secure Payment Gateway...');">
+                        Proceed to Pay 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </button>
+                    
+                    <div class="secure-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+                        SSL Secure Payment
+                    </div>
+                </form>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

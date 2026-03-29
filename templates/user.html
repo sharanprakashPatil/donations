@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Access - Donation Portal</title>
+    <link rel="stylesheet" href="{% static 'css/user.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <a href="{% url 'home' %}" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+            Back to Home
+        </a>
+        <!-- Split Panel Layout -->
+        <div class="auth-card" id="authCard">
+            
+            <!-- Information / Graphic Side -->
+            <div class="auth-overlay">
+                <div class="overlay-panel overlay-left">
+                    <h2>Welcome Back!</h2>
+                    <p>To keep connected with our community, please log in with your personal info.</p>
+                    <button class="ghost-btn" id="signInBtn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h2>Hello, Friend!</h2>
+                    <p>Enter your personal details and start your journey of giving or receiving aid.</p>
+                    <button class="ghost-btn" id="signUpBtn">Create Account</button>
+                </div>
+            </div>
+
+            <!-- Sign In Form Side -->
+            <div class="auth-form-container sign-in-container">
+                <form action="{% url 'user_auth' %}" method="POST">
+                    {% csrf_token %}
+                    <h2>Sign In</h2>
+                    <div class="social-container">
+                        <a href="#" class="social"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#" class="social"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+                    </div>
+                    <span>or use your account</span>
+                    <input type="text" name="contact" placeholder="Email or Phone Number" required />
+                    <input type="password" name="password" placeholder="Password" required />
+                    <a href="#" class="forgot-link">Forgot your password?</a>
+                    <button type="submit" class="primary-btn">Sign In</button>
+                </form>
+            </div>
+
+            <!-- Sign Up Form Side -->
+            <div class="auth-form-container sign-up-container">
+                <form action="{% url 'user_auth' %}" method="POST">
+                    {% csrf_token %}
+                    <h2>Create Account</h2>
+                    <div class="social-container">
+                        <a href="#" class="social"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#" class="social"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+                    </div>
+                    <span>or use your email or phone number for registration</span>
+                    <input type="text" name="name" placeholder="Full Name" required />
+                    <input type="text" name="contact" placeholder="Email or Phone Number" required />
+                    <input type="password" name="password" placeholder="Password" required />
+                    <button type="submit" class="primary-btn">Sign Up</button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Toggle Logic for the Sliding forms -->
+    <script>
+        const signUpButton = document.getElementById('signUpBtn');
+        const signInButton = document.getElementById('signInBtn');
+        const authCard = document.getElementById('authCard');
+
+        signUpButton.addEventListener('click', () => {
+            authCard.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            authCard.classList.remove("right-panel-active");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Document Verification</title>
+    <link rel="stylesheet" href="{% static 'css/verification.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation (Matching AdminData) -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <!-- Shield icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <h2>Admin Portal</h2>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="/admindata/" class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+                    Dashboard Overview
+                </a>
+                <a href="#" class="nav-item active">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-open"><path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2"/></svg>
+                    Document Verification
+                </a>
+                <a href="{% url 'home' %}" class="nav-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-home"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Back to Home
+                </a>
+                <a href="/admin-login/" class="nav-item logout">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                    Logout
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="greeting">
+                    <h1>Document Verification Center</h1>
+                    <p>Review and process uploaded documents from seekers requiring aid.</p>
+                </div>
+            </header>
+
+            <!-- Documents List -->
+            <div class="documents-list">
+                
+                <!-- Mock Document Block 1 -->
+                <div class="document-block fade-in" id="doc-block-1">
+                    <div class="document-card">
+                        <div class="doc-info">
+                            <div class="doc-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                            </div>
+                            <div class="doc-details">
+                                <h3>Seeker: Jane Doe</h3>
+                                <p>medical_bill_scan_2025.pdf</p>
+                                <span class="upload-date">Uploaded: Mar 24, 2026</span>
+                            </div>
+                        </div>
+                        
+                        <div class="doc-actions" id="actions-1">
+                            <button class="btn btn-load" onclick="alert('Simulating Document Load: Opening medical_bill_scan_2025.pdf')">
+                                Load Document
+                            </button>
+                            <button class="btn btn-accept" onclick="acceptDocument(1, 'Chase Bank', '120045678901', 'CHASUS22')">
+                                Accept
+                            </button>
+                            <button class="btn btn-reject" onclick="rejectDocument(1)">
+                                Reject
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Bank Details Div (Hidden by default) -->
+                    <div class="bank-details-card" id="bank-details-1" style="display: none;">
+                        <div class="bank-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle-2 text-green"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                            <h4>Verified Seeker Bank Details</h4>
+                        </div>
+                        <div class="bank-grid">
+                            <div class="bank-item">
+                                <span class="bank-label">Bank Name</span>
+                                <span class="bank-value" id="bname-1"></span>
+                            </div>
+                            <div class="bank-item">
+                                <span class="bank-label">Account Number</span>
+                                <span class="bank-value" id="bacc-1"></span>
+                            </div>
+                            <div class="bank-item">
+                                <span class="bank-label">IFSC Code</span>
+                                <span class="bank-value" id="bifsc-1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mock Document Block 2 -->
+                <div class="document-block fade-in" id="doc-block-2" style="animation-delay: 0.1s;">
+                    <div class="document-card">
+                        <div class="doc-info">
+                            <div class="doc-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-image"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                            </div>
+                            <div class="doc-details">
+                                <h3>Seeker: Michael Smith</h3>
+                                <p>proof_of_residence.jpg</p>
+                                <span class="upload-date">Uploaded: Mar 26, 2026</span>
+                            </div>
+                        </div>
+                        
+                        <div class="doc-actions" id="actions-2">
+                            <button class="btn btn-load" onclick="alert('Simulating Document Load: Opening proof_of_residence.jpg')">
+                                Load Document
+                            </button>
+                            <button class="btn btn-accept" onclick="acceptDocument(2, 'State Bank of India', '30248571932', 'SBIN0001234')">
+                                Accept
+                            </button>
+                            <button class="btn btn-reject" onclick="rejectDocument(2)">
+                                Reject
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Bank Details Div (Hidden by default) -->
+                    <div class="bank-details-card" id="bank-details-2" style="display: none;">
+                        <div class="bank-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle-2 text-green"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                            <h4>Verified Seeker Bank Details</h4>
+                        </div>
+                        <div class="bank-grid">
+                            <div class="bank-item">
+                                <span class="bank-label">Bank Name</span>
+                                <span class="bank-value" id="bname-2"></span>
+                            </div>
+                            <div class="bank-item">
+                                <span class="bank-label">Account Number</span>
+                                <span class="bank-value" id="bacc-2"></span>
+                            </div>
+                            <div class="bank-item">
+                                <span class="bank-label">IFSC Code</span>
+                                <span class="bank-value" id="bifsc-2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mock Document Block 3 -->
+                <div class="document-block fade-in" id="doc-block-3" style="animation-delay: 0.2s;">
+                    <div class="document-card">
+                        <div class="doc-info">
+                            <div class="doc-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                            </div>
+                            <div class="doc-details">
+                                <h3>Seeker: Sarah Jenkins</h3>
+                                <p>disaster_relief_form.pdf</p>
+                                <span class="upload-date">Uploaded: Mar 28, 2026</span>
+                            </div>
+                        </div>
+                        
+                        <div class="doc-actions" id="actions-3">
+                            <button class="btn btn-load" onclick="alert('Simulating Document Load: Opening disaster_relief_form.pdf')">
+                                Load Document
+                            </button>
+                            <button class="btn btn-accept" onclick="acceptDocument(3, 'Bank of America', '88410293021', 'BOFAUS3N')">
+                                Accept
+                            </button>
+                            <button class="btn btn-reject" onclick="rejectDocument(3)">
+                                Reject
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Bank Details Div (Hidden by default) -->
+                    <div class="bank-details-card" id="bank-details-3" style="display: none;">
+                        <div class="bank-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle-2 text-green"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                            <h4>Verified Seeker Bank Details</h4>
+                        </div>
+                        <div class="bank-grid">
+                            <div class="bank-item">
+                                <span class="bank-label">Bank Name</span>
+                                <span class="bank-value" id="bname-3"></span>
+                            </div>
+                            <div class="bank-item">
+                                <span class="bank-label">Account Number</span>
+                                <span class="bank-value" id="bacc-3"></span>
+                            </div>
+                            <div class="bank-item">
+                                <span class="bank-label">IFSC Code</span>
+                                <span class="bank-value" id="bifsc-3"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Interactive Javascript for displaying Bank Details upon Accept -->
+    <script>
+        function acceptDocument(id, bankName, accountNo, ifscCode) {
+            // Update action area with accepted status badge
+            const actionsDiv = document.getElementById('actions-' + id);
+            actionsDiv.innerHTML = '<span class="status-badge success">Accepted - Pending Transfer</span>';
+
+            // Populate bank details dynamically
+            document.getElementById('bname-' + id).textContent = bankName;
+            document.getElementById('bacc-' + id).textContent = accountNo;
+            document.getElementById('bifsc-' + id).textContent = ifscCode;
+
+            // Display the details card with a smooth drop animation
+            const bankDetails = document.getElementById('bank-details-' + id);
+            bankDetails.style.display = 'block';
+            
+            // Allow browser paint before adding animation class
+            requestAnimationFrame(() => {
+                bankDetails.classList.add('show-details');
+            });
+        }
+
+        function rejectDocument(id) {
+            const actionsDiv = document.getElementById('actions-' + id);
+            actionsDiv.innerHTML = '<span class="status-badge danger">Document Rejected</span>';
+            const documentBlock = document.getElementById('doc-block-' + id);
+            
+            // Optional styling tweak for rejected documents
+            const card = documentBlock.querySelector('.document-card');
+            card.style.opacity = '0.5';
+            card.style.filter = 'grayscale(100%)';
+        }
+    </script>
+</body>
+</html>
