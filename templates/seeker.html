@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start a Campaign - Seeker Portal</title>
+    <link rel="stylesheet" href="{% static 'css/seeker.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="campaign-container">
+        
+        <!-- Navbar -->
+        <nav class="top-nav">
+            <a href="/base/" class="back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                Back to Dashboard
+            </a>
+            <div class="brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span>Seeker Portal</span>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="form-wrapper glass-panel fade-in">
+                
+                <header class="form-header">
+                    <h2>Start Your Campaign</h2>
+                    <p>Tell us your story. Explain your situation clearly so donors can understand how to best help you.</p>
+                </header>
+
+                <form action="{% url 'seeker' %}" method="POST" enctype="multipart/form-data" class="campaign-form">
+                    {% csrf_token %}
+                    
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="name">Full Name</label>
+                            <div class="input-icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="goal">Target Goal (₹)</label>
+                            <div class="input-icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                <input type="number" id="goal" name="goal" min="1000" placeholder="50000" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="reason">Reason for Raising Funds</label>
+                        <p class="helper-text">Explain in detail why you need these funds, how they will be used, and any other relevant context.</p>
+                        <textarea id="reason" name="reason" rows="15" placeholder="I am starting this campaign because..." required></textarea>
+                    </div>
+
+                    <!-- Direct Document Upload Option -->
+                    <div class="input-group full-width">
+                        <label for="document">Verification Document Upload</label>
+                        <p class="helper-text">Please securely upload your verification proof (Medical Bills, Identity, etc. in PDF, JPG or PNG format).</p>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="document" name="document" accept=".pdf, .jpg, .jpeg, .png" class="file-input" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit" onclick="alert('Application and Documents Submitted Successfully!');">
+                        Submit Application
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                    
+                </form>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

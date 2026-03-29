@@ -1,0 +1,327 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: #0f172a;
+    color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background gradient glows */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: 0;
+}
+
+body::before { background: rgba(16, 185, 129, 0.08); top: -200px; left: -200px; }
+body::after { background: rgba(99, 102, 241, 0.08); bottom: -200px; right: -200px; }
+
+/* Navigation */
+.top-navbar {
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.text-indigo { color: #8b5cf6; }
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: white;
+}
+
+.btn-logout {
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+    background: #ef4444;
+    color: white;
+}
+
+/* Main Container Layout */
+.main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    z-index: 10;
+}
+
+.hero-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 600px;
+}
+
+.gradient-text {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-header p {
+    font-size: 1.15rem;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+/* Base Actions / Metrics Dashboard */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.metric-card {
+    position: relative;
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 28px;
+    padding: 3.5rem 3rem;
+    color: white;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.metric-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.3);
+}
+
+/* Thematic Hovers */
+.donor-card:hover { border-color: rgba(16, 185, 129, 0.4); }
+.seeker-card:hover { border-color: rgba(99, 102, 241, 0.4); }
+
+.card-bg-effect {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    top: -50px;
+    right: -50px;
+}
+
+.donor-card .card-bg-effect { background: rgba(16, 185, 129, 0.15); }
+.seeker-card .card-bg-effect { background: rgba(99, 102, 241, 0.15); }
+
+.metric-card:hover .card-bg-effect { opacity: 1; }
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.icon-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ease;
+}
+
+.donor-card .icon-wrapper { background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), transparent); color: #10b981; }
+.seeker-card .icon-wrapper { background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), transparent); color: #8b5cf6; }
+
+.card-header h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 0.02rem;
+    color: #cbd5e1;
+}
+
+/* Value Displays */
+.metric-value {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.currency {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.amount {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.05rem;
+    background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.donor-card .amount {
+    background: linear-gradient(135deg, #fff 0%, #6ee7b7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.seeker-card .amount {
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.target-amount {
+    color: #64748b;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.metric-subtitle {
+    color: #94a3b8;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+    flex: 1;
+}
+
+/* Progress Bar Component */
+.progress-container {
+    width: 100%;
+    margin-bottom: 2.5rem;
+    flex: 1;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%);
+    border-radius: 20px;
+    transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.progress-text {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+/* Action Buttons */
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.make-donation-btn {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.make-donation-btn:hover { background: #10b981; color: white; transform: translateY(-3px); box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4); }
+
+.start-campaign-btn {
+    background: rgba(99, 102, 241, 0.1);
+    color: #8b5cf6;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.start-campaign-btn:hover { background: #6366f1; color: white; transform: translateY(-3px); box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4); }
+
+/* Animations */
+.fade-in { animation: fadeInSlide 0.8s backwards ease-out; }
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 950px) {
+    .metrics-grid { grid-template-columns: 1fr; }
+    .top-navbar { padding: 1.5rem 2rem; }
+}

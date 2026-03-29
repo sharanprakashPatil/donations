@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - User Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/userdata.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-wrap">
+        <!-- Minimal Top Nav -->
+        <nav class="top-navbar">
+            <div class="brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>My Profile</span>
+            </div>
+            <div class="nav-links">
+                <a href="/base/" class="nav-link active">Impact Hub</a>
+                <a href="/home/" class="nav-link">Home</a>
+                <a href="/user/" class="btn-logout">Logout</a>
+            </div>
+        </nav>
+
+        <main class="main-container">
+            <header class="hero-header fade-in">
+                <h1 class="gradient-text">Your Personal Impact</h1>
+                <p>Track your lifetime generosity and the progress of your active funding requests below.</p>
+            </header>
+
+            <div class="metrics-grid">
+                
+                <!-- Donor Metrics Card -->
+                <div class="metric-card donor-card fade-in" style="animation-delay: 0.1s;">
+                    <div class="card-bg-effect"></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </div>
+                            <h3>Total Donated Amount</h3>
+                        </div>
+                        
+                        <div class="metric-value">
+                            <span class="currency">₹</span>
+                            <span class="amount">{{ donated_amount }}</span>
+                        </div>
+                        <p class="metric-subtitle">You are making a massive difference in the lives of verified seekers.</p>
+                        
+                        <a href="/base/" class="action-btn make-donation-btn">
+                            Make Another Donation
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Seeker Metrics Card -->
+                <div class="metric-card seeker-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="card-bg-effect"></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                            </div>
+                            <h3>Active Seeked Amount</h3>
+                        </div>
+                        
+                        <div class="metric-value">
+                            <span class="currency">₹</span>
+                            <span class="amount">{{ raised_amount }}</span>
+                            <span class="target-amount">/ ₹{{ target_seeked_amount }} required</span>
+                        </div>
+
+                        <!-- Progress Bar logic: cap progress visually to 100% max using simple width constraint -->
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <!-- Mocking the percentage based on context variables 12500/50000 = 25% -->
+                                <div class="progress-fill" style="width: min(25%, 100%);"></div>
+                            </div>
+                            <span class="progress-text">25% Fully Funded</span>
+                        </div>
+                        
+                        <a href="/base/" class="action-btn start-campaign-btn">
+                            Start New Campaign
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>
