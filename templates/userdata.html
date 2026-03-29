@@ -1,7 +1,10 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
+=======
+>>>>>>> 70875e671408b029b7d1f928a230940b9f2432a0
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,23 +12,34 @@
     <link rel="stylesheet" href="{% static 'css/userdata.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 70875e671408b029b7d1f928a230940b9f2432a0
 <body>
     <div class="dashboard-wrap">
         <!-- Minimal Top Nav -->
         <nav class="top-navbar">
             <div class="brand">
+<<<<<<< HEAD
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="text-indigo">
                     <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
                     <circle cx="12" cy="7" r="4" />
                 </svg>
+=======
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+>>>>>>> 70875e671408b029b7d1f928a230940b9f2432a0
                 <span>My Profile</span>
             </div>
             <div class="nav-links">
                 <a href="/base/" class="nav-link active">Impact Hub</a>
+<<<<<<< HEAD
 
+=======
+                <a href="/home/" class="nav-link">Home</a>
+>>>>>>> 70875e671408b029b7d1f928a230940b9f2432a0
                 <a href="/user/" class="btn-logout">Logout</a>
             </div>
         </nav>
@@ -37,13 +51,18 @@
             </header>
 
             <div class="metrics-grid">
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 70875e671408b029b7d1f928a230940b9f2432a0
                 <!-- Donor Metrics Card -->
                 <div class="metric-card donor-card fade-in" style="animation-delay: 0.1s;">
                     <div class="card-bg-effect"></div>
                     <div class="card-content">
                         <div class="card-header">
                             <div class="icon-wrapper">
+<<<<<<< HEAD
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">
@@ -54,10 +73,18 @@
                             <h3>Total Donated Amount</h3>
                         </div>
 
+=======
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </div>
+                            <h3>Total Donated Amount</h3>
+                        </div>
+                        
+>>>>>>> 70875e671408b029b7d1f928a230940b9f2432a0
                         <div class="metric-value">
                             <span class="currency">₹</span>
                             <span class="amount">{{ donated_amount }}</span>
                         </div>
+<<<<<<< HEAD
                         <p class="metric-subtitle">You are making a massive difference in the lives of verified seekers.
                         </p>
 
@@ -69,6 +96,13 @@
                                 <path d="M5 12h14" />
                                 <path d="m12 5 7 7-7 7" />
                             </svg>
+=======
+                        <p class="metric-subtitle">You are making a massive difference in the lives of verified seekers.</p>
+                        
+                        <a href="/base/" class="action-btn make-donation-btn">
+                            Make Another Donation
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+>>>>>>> 70875e671408b029b7d1f928a230940b9f2432a0
                         </a>
                     </div>
                 </div>
@@ -79,6 +113,7 @@
                     <div class="card-content">
                         <div class="card-header">
                             <div class="icon-wrapper">
+<<<<<<< HEAD
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round">
@@ -89,6 +124,13 @@
                             <h3>Active Seeked Amount</h3>
                         </div>
 
+=======
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+                            </div>
+                            <h3>Active Seeked Amount</h3>
+                        </div>
+                        
+>>>>>>> 70875e671408b029b7d1f928a230940b9f2432a0
                         <div class="metric-value">
                             <span class="currency">₹</span>
                             <span class="amount">{{ raised_amount }}</span>
@@ -103,6 +145,7 @@
                             </div>
                             <span class="progress-text">25% Fully Funded</span>
                         </div>
+<<<<<<< HEAD
 
                         <a href="/base/" class="action-btn start-campaign-btn">
                             Start New Campaign
@@ -112,6 +155,12 @@
                                 <path d="M5 12h14" />
                                 <path d="m12 5 7 7-7 7" />
                             </svg>
+=======
+                        
+                        <a href="/base/" class="action-btn start-campaign-btn">
+                            Start New Campaign
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+>>>>>>> 70875e671408b029b7d1f928a230940b9f2432a0
                         </a>
                     </div>
                 </div>
@@ -120,5 +169,9 @@
         </main>
     </div>
 </body>
+<<<<<<< HEAD
 
 </html>
+=======
+</html>
+>>>>>>> 70875e671408b029b7d1f928a230940b9f2432a0

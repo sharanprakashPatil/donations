@@ -1,5 +1,6 @@
 from django.db import models
 
+<<<<<<< HEAD
 class HomeContent(models.Model):
     title = models.CharField(max_length=200, default="Make a Difference Today")
     quote = models.TextField(default="love for all , hate for none ...")
@@ -10,3 +11,6 @@ class HomeContent(models.Model):
 
     def __str__(self):
         return self.title
+=======
+# Create your models here.
+>>>>>>> 70875e671408b029b7d1f928a230940b9f2432a0

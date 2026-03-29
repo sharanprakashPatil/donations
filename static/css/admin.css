@@ -56,6 +56,7 @@ body::after {
     z-index: 10;
     display: flex;
     justify-content: center;
+<<<<<<< HEAD
     position: relative;
 }
 
@@ -77,6 +78,8 @@ body::after {
 .back-home:hover {
     color: #f8fafc;
     transform: translateX(-4px);
+=======
+>>>>>>> 70875e671408b029b7d1f928a230940b9f2432a0
 }
 
 .login-card {
