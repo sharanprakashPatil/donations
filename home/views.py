@@ -11,3 +11,5 @@ def home_page(request):
 def home_page(request):
     return render(request, 'home.html')
 >>>>>>> 70875e671408b029b7d1f928a230940b9f2432a0
+
+#Testing
